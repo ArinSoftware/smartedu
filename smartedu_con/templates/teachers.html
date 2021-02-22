@@ -1,0 +1,70 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+
+{% block content %}
+	
+	<div class="all-title-box">
+		<div class="container text-center">
+			<h1>Teachers<span class="m_1">Lorem Ipsum dolroin gravida nibh vel velit.</span></h1>
+		</div>
+	</div>
+	
+	<div id="teachers" class="section wb">
+        <div class="container">
+            <div class="row">
+
+				{% for teacher in teachers %}
+				<div class="col-lg-3 col-md-6 col-12">
+					<div class="our-team">
+						<div class="team-img">
+							<img src="{{teacher.image.url}}">
+							<div class="social">
+								<ul>
+									<li><a href="{{teacher.facebook}}" class="fa fa-facebook"></a></li>
+									<li><a href="{{teacher.twitter}}" class="fa fa-twitter"></a></li>
+									<li><a href="{{teacher.linkedin}}" class="fa fa-linkedin"></a></li>
+									<li><a href="{{teacher.youtube}}" class="fa fa-youtube"></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="team-content">
+							<h3 class="title">{{teacher.name}}</h3>
+							<span class="post">{{teacher.title}}</span>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+
+
+            </div><!-- end row -->
+<!-- 
+			<div class="row">
+				<div class="pagination">
+					<span class="step-links">
+						{% if page_obj.has_previous %}
+							<a href="?page=1">&laquo; first</a>
+							<a href="?page={{ page_obj.previous_page_number }}">previous</a>
+						{% endif %}
+				
+						<span class="current">
+							Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+						</span>
+				
+						{% if page_obj.has_next %}
+							<a href="?page={{ page_obj.next_page_number }}">next</a>
+							<a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+						{% endif %}
+					</span>
+				</div>
+			</div> -->
+
+        </div><!-- end container -->
+    </div><!-- end section -->	
+{% endblock %}
+
+
+
+
+
+
+

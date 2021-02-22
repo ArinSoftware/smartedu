@@ -16,7 +16,7 @@
                     <li class="nav-item {% if '/' == request.path %} active {% endif %}"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
                     <li class="nav-item {% if 'about' in request.path %} active {% endif %}"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>
                     <li class="nav-item {% if 'courses' in request.path %} active {% endif %}"><a class="nav-link" href="{% url 'courses' %}">Courses</a></li>
-                    <li class="nav-item"><a class="nav-link" href="teachers.html">Teachers</a></li>						
+                    <li class="nav-item {% if 'teachers' in request.path %} active {% endif %}"><a class="nav-link" href="{% url 'teachers' %}">Teachers</a></li>					
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
