@@ -1,0 +1,62 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+
+{% block content %}
+	
+	<div class="all-title-box">
+		<div class="container text-center">
+			<h1>Contact<span class="m_1">Lorem Ipsum dolroin gravida nibh vel velit.</span></h1>
+		</div>
+	</div>
+	
+    <div id="contact" class="section wb">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>Need Help? Sure we are Online!</h3>
+                <p class="lead">Let us give you more details about the special offer website you want us. Please fill out the form below. <br>We have million of website owners who happy to work with us!</p>
+            </div><!-- end title -->
+
+            <div class="row">
+                <div class="offset-xl-2 col-xl-8 col-md-12 col-sm-12">
+
+					{% if messages %}
+						{% for message in messages %}
+							<div class="alert alert-{{message.tags}}">
+								{{message}}
+							</div>
+						{% endfor %}
+
+					{% endif %}
+
+
+                    <div class="contact_form">
+                        <div id="message"></div>
+                        <form action="" method="POST">
+							{% csrf_token %}
+                            <div class="row row-fluid">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    {{form.first_name}}
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    {{form.last_name}}
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    {{form.email}}
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    {{form.phone}}
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    {{form.message}}
+                                </div>
+                                <div class="text-center pd">
+                                    <button type="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Get a Quote</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+	{% endblock %}
