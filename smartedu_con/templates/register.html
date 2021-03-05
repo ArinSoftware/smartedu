@@ -14,34 +14,41 @@
               <!-- Tab panes -->
               <div class="tab-content">
                   <div class="tab-pane active" id="Registration">
-                      <form role="form" class="form-horizontal">
+                      <form method="POST" role="form" class="form-horizontal">
+                        {% csrf_token %}
                           <div class="form-group">
                               <div class="col-sm-12">
-                                  <input class="form-control" placeholder="Name" type="text">
+                                  {{form.first_name}}
                               </div>
                           </div>
                           <div class="form-group">
                               <div class="col-sm-12">
-                                  <input class="form-control" id="email" placeholder="Email" type="email">
+                                {{form.last_name}}
                               </div>
                           </div>
                           <div class="form-group">
                               <div class="col-sm-12">
-                                  <input class="form-control" id="mobile" placeholder="Mobile" type="email">
+                                {{form.username}}
                               </div>
                           </div>
                           <div class="form-group">
                               <div class="col-sm-12">
-                                  <input class="form-control" id="password" placeholder="Password" type="password">
+                                {{form.email}}
                               </div>
                           </div>
+                          <div class="form-group">
+                            <div class="col-sm-12">
+                              {{form.password1}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                              {{form.password2}}
+                            </div>
+                        </div>
                           <div class="row">							
                               <div class="col-sm-10">
-                                  <button type="button" class="btn btn-light btn-radius btn-brd grd1">
-                                      Save &amp; Continue
-                                  </button>
-                                  <button type="button" class="btn btn-light btn-radius btn-brd grd1">
-                                      Cancel</button>
+                                <input type="submit" value="Register" class="btn btn-light btn-radius btn-brd grd1">
                               </div>
                           </div>
                       </form>
