@@ -2,140 +2,169 @@
 {% load static %}
 
 {% block content %}
-	
-	<div class="all-title-box">
-		<div class="container text-center">
-			<h1>{{course.name}}</span></h1>
-		</div>
+
+<div class="all-title-box">
+	<div class="container text-center">
+		<h1>{{course.name}}</span></h1>
 	</div>
-	
-    <div id="overviews" class="section wb">
-        <div class="container">
-            <div class="row"> 
-                <div class="col-lg-9 blog-post-single">
-                    <div class="blog-item">
-						<div class="image-blog">
-							<img src="{{course.image.url}}" alt="" class="img-fluid">
-						</div>
-						<div class="post-content">
-							<div class="post-date">
-								{% if user.is_authenticated %}
-								<button type="submit" class="btn btn-outline-success rounded-0" data-toggle="modal" data-target="#enrollModal">
+</div>
+
+<div id="overviews" class="section wb">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9 blog-post-single">
+				<div class="blog-item">
+					<div class="image-blog">
+						<img src="{{course.image.url}}" alt="" class="img-fluid">
+					</div>
+					<div class="post-content">
+						<div class="post-date">
+							{% if user.is_authenticated %}
+
+								{% if course in enrolled_courses %}
+								<button type="submit" class="btn btn-outline-danger rounded-0" data-toggle="modal"
+									data-target="#releaseModal">
+									<span>RELEASE</span>
+								</button>
+								{% else %}
+								<button type="submit" class="btn btn-outline-success rounded-0" data-toggle="modal"
+									data-target="#enrollModal">
 									<span>ENROLL</span>
 								</button>
 								{% endif %}
-							</div>
-							<div class="meta-info-blog">
-								<span><i class="fa fa-calendar"></i> {{course.date|date:"d M Y"}}</span>
-								<span><i class="fa fa-comments"></i> Students</span>
-							</div>
-							<div class="blog-title">
-								<h2><a href="#" title="">{{course.name}}</a></h2>
-							</div>
-							<div class="blog-desc">
-								
-								<blockquote class="default">
-									{{course.description}}
-								</blockquote>
+							{% endif %}
+						</div>
+						<div class="meta-info-blog">
+							<span><i class="fa fa-calendar"></i> {{course.date|date:"d M Y"}}</span>
+							<span><i class="fa fa-comments"></i> Students</span>
+						</div>
+						<div class="blog-title">
+							<h2><a href="#" title="">{{course.name}}</a></h2>
+						</div>
+						<div class="blog-desc">
 
-							</div>							
-						</div>
-					</div>
-					
-					<div class="blog-author">
-						<div class="author-bio">
-							<h3 class="author_name"><a href="{% url 'teacher_detail' course.teacher.pk %}">{{course.teacher.name}}</a></h3>
-							<h5>{{course.teacher.title}}</h5>
-							<p class="author_det">
-								{{course.teacher.description}}
-							</p>
-						</div>
-						<div class="author-desc">
-							<img src="{{course.teacher.image.url}}" alt="about author">
-							<ul class="author-social">
-								<li><a href="{{course.teacher.facebook}}"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="{{course.teacher.twitter}}"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="{{course.teacher.linkedin}}"><i class="fa fa-linkedin"></i></a></li>
-							</ul>
-						</div>
-					</div>
+							<blockquote class="default">
+								{{course.description}}
+							</blockquote>
 
-					
-                </div><!-- end col -->
-				<div class="col-lg-3 col-12 right-single">
-					<div class="widget-search">
-						<div class="site-search-area">
-							<form method="get" id="site-searchform" action="#">
-								<div>
-									<input class="input-text form-control" name="search-k" id="search-k" placeholder="Search keywords..." type="text">
-									<input id="searchsubmit" value="Search" type="submit">
-								</div>
-							</form>
 						</div>
 					</div>
-					<div class="widget-categories">
-						<h3 class="widget-title">Categories</h3>
-						<ul>
-							<li><a href="#">Political Science</a></li>
-							<li><a href="#">Business Leaders Guide</a></li>
-							<li><a href="#">Become a Product Manage</a></li>
-							<li><a href="#">Language Education</a></li>
-							<li><a href="#">Micro Biology</a></li>
-							<li><a href="#">Social Media Management</a></li>
-						</ul>
+				</div>
+
+				<div class="blog-author">
+					<div class="author-bio">
+						<h3 class="author_name"><a
+								href="{% url 'teacher_detail' course.teacher.pk %}">{{course.teacher.name}}</a></h3>
+						<h5>{{course.teacher.title}}</h5>
+						<p class="author_det">
+							{{course.teacher.description}}
+						</p>
 					</div>
-					<div class="widget-tags">
-						<h3 class="widget-title">Search Tags</h3>
-						<ul class="tags">
-							<li><a href="#"><b>business</b></a></li>
-							<li><a href="#"><b>jquery</b></a></li>
-							<li><a href="#">corporate</a></li>
-							<li><a href="#">portfolio</a></li>
-							<li><a href="#">css3</a></li>
-							<li><a href="#"><b>theme</b></a></li>
-							<li><a href="#"><b>html5</b></a></li>
-							<li><a href="#"><b>mysql</b></a></li>
-							<li><a href="#">multipurpose</a></li>
-							<li><a href="#">responsive</a></li>
-							<li><a href="#">premium</a></li>
-							<li><a href="#">javascript</a></li>
-							<li><a href="#"><b>Best jQuery</b></a></li>
+					<div class="author-desc">
+						<img src="{{course.teacher.image.url}}" alt="about author">
+						<ul class="author-social">
+							<li><a href="{{course.teacher.facebook}}"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="{{course.teacher.twitter}}"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="{{course.teacher.linkedin}}"><i class="fa fa-linkedin"></i></a></li>
 						</ul>
 					</div>
 				</div>
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
 
 
-			  <!-- ENROLL Modal -->
-			  <div class="modal fade" id="enrollModal" tabindex="-1" role="dialog" aria-labelledby="enrollModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered">
-				  <div class="modal-content">
-					<div class="modal-header">
-						<h2 class="modal-title" id="enrollModalLabel">Enroll The Course</h2>
-					  <button type="button" class="close" data-dismiss="modal">
-						<span>&times;</span>
-					  </button>
+			</div><!-- end col -->
+			<div class="col-lg-3 col-12 right-single">
+				<div class="widget-search">
+					<div class="site-search-area">
+						<form method="get" id="site-searchform" action="#">
+							<div>
+								<input class="input-text form-control" name="search-k" id="search-k"
+									placeholder="Search keywords..." type="text">
+								<input id="searchsubmit" value="Search" type="submit">
+							</div>
+						</form>
 					</div>
-					<div class="modal-body">
-						<p>You will enroll the course below:</p>
-						<h1>{{course.name}}</h1>
-					  </div>
-					  <div class="modal-footer">
-							<form action="{% url 'enroll_the_course' %}" method="POST">
-								{% csrf_token %}
-								<input type="hidden" name="user_id" value="{{user.id}}">
-								<input type="hidden" name="course_id" value="{{course.id}}">
-								<input type="submit" value="I AM SURE" class="btn btn-success">
-							</form>
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">
-								CANCEL
-							</button>
-					  </div>
-				  </div>
 				</div>
-			  </div>
+				<div class="widget-categories">
+					<h3 class="widget-title">Categories</h3>
+					<ul>
+						{% for category in categories %}
+							<li><a href="{% url 'courses_by_category' category.slug %}">{{category.name}}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="widget-tags">
+					<h3 class="widget-title">Search Tags</h3>
+					<ul class="tags">
+						{% for tag in tags %}
+						<li><a href="{% url 'courses_by_tag' tag.slug %}">{% if tag.slug in request.path %} <b>{{tag.name}}</b>{% else %}{{tag.name}}{% endif %}</a></li>
+					{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div><!-- end row -->
+	</div><!-- end container -->
+</div><!-- end section -->
 
 
-    {% endblock %}
+<!-- ENROLL Modal -->
+<div class="modal fade" id="enrollModal" tabindex="-1" role="dialog" aria-labelledby="enrollModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2 class="modal-title" id="enrollModalLabel">Enroll The Course</h2>
+				<button type="button" class="close" data-dismiss="modal">
+					<span>&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>You will enroll the course below:</p>
+				<h1>{{course.name}}</h1>
+			</div>
+			<div class="modal-footer">
+				<form action="{% url 'enroll_the_course' %}" method="POST">
+					{% csrf_token %}
+					<input type="hidden" name="user_id" value="{{user.id}}">
+					<input type="hidden" name="course_id" value="{{course.id}}">
+					<input type="submit" value="I AM SURE" class="btn btn-success">
+				</form>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">
+					CANCEL
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- RELEASEModal -->
+<div class="modal fade" id="releaseModal" tabindex="-1" role="dialog" aria-labelledby="releaseModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2 class="modal-title" id="releaseModalLabel">Enroll The Course</h2>
+				<button type="button" class="close" data-dismiss="modal">
+					<span>&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>You will release the course below:</p>
+				<h1>{{course.name}}</h1>
+			</div>
+			<div class="modal-footer">
+				<form action="{% url 'release_the_course' %}" method="POST">
+					{% csrf_token %}
+					<input type="hidden" name="user_id" value="{{user.id}}">
+					<input type="hidden" name="course_id" value="{{course.id}}">
+					<input type="submit" value="I AM SURE" class="btn btn-danger">
+				</form>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">
+					CANCEL
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
