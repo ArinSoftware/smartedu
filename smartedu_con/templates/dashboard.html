@@ -16,11 +16,8 @@
 					
 					<div class="blog-author">
 						<div class="author-bio">
-							<h3 class="author_name">{{ teacher.name }}</h3>
-							<h5>{{ teacher.title }}</h5>
-							<p class="author_det">
-								{{ teacher.description }}
-							</p>
+							<h2 class="author_name">{{ user.first_name }} {{ user.last_name }}</h3>
+
 						</div>
 					</div>
 					
@@ -30,7 +27,7 @@
 
             <div class="row"> 
                 <div class="col-lg-12">
-                    <h2 class="text-center my-5">Courses Give By {{ teacher.name }}</h2>
+                    <h2 class="text-center my-5">Courses Enrolled By {{ user.username  }}</h2>
                 </div>
                 {% for course in courses %}
 
@@ -49,9 +46,8 @@
 						</div>
 						<div class="course-meta-bot">
 							<ul>
-								<li><i class="fa fa-calendar" aria-hidden="true"></i> 6 Month</li>
-								<li><i class="fa fa-users" aria-hidden="true"></i> 56 Student</li>
-								<li><i class="fa fa-book" aria-hidden="true"></i> 7 Books</li>
+								<li><i class="fa fa-calendar" aria-hidden="true"></i> {{course.date|date:"d M Y"}}</li>
+								<li><i class="fa fa-book" aria-hidden="true"></i> {{course.teacher}}</li>
 							</ul>
 						</div>
 					</div>

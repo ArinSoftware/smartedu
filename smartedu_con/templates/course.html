@@ -19,13 +19,15 @@
 						</div>
 						<div class="post-content">
 							<div class="post-date">
-								<span class="day">30</span>
-								<span class="month">Nov</span>
+								{% if user.is_authenticated %}
+								<button type="submit" class="btn btn-outline-success rounded-0" data-toggle="modal" data-target="#enrollModal">
+									<span>ENROLL</span>
+								</button>
+								{% endif %}
 							</div>
 							<div class="meta-info-blog">
-								<span><i class="fa fa-calendar"></i> <a href="#">May 11, 2015</a> </span>
-								<span><i class="fa fa-tag"></i>  <a href="#">News</a> </span>
-								<span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
+								<span><i class="fa fa-calendar"></i> {{course.date|date:"d M Y"}}</span>
+								<span><i class="fa fa-comments"></i> Students</span>
 							</div>
 							<div class="blog-title">
 								<h2><a href="#" title="">{{course.name}}</a></h2>
@@ -104,6 +106,36 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end section -->
+
+
+			  <!-- ENROLL Modal -->
+			  <div class="modal fade" id="enrollModal" tabindex="-1" role="dialog" aria-labelledby="enrollModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered">
+				  <div class="modal-content">
+					<div class="modal-header">
+						<h2 class="modal-title" id="enrollModalLabel">Enroll The Course</h2>
+					  <button type="button" class="close" data-dismiss="modal">
+						<span>&times;</span>
+					  </button>
+					</div>
+					<div class="modal-body">
+						<p>You will enroll the course below:</p>
+						<h1>{{course.name}}</h1>
+					  </div>
+					  <div class="modal-footer">
+							<form action="{% url 'enroll_the_course' %}" method="POST">
+								{% csrf_token %}
+								<input type="hidden" name="user_id" value="{{user.id}}">
+								<input type="hidden" name="course_id" value="{{course.id}}">
+								<input type="submit" value="I AM SURE" class="btn btn-success">
+							</form>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">
+								CANCEL
+							</button>
+					  </div>
+				  </div>
+				</div>
+			  </div>
 
 
     {% endblock %}
